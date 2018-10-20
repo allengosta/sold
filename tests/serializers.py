@@ -8,6 +8,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
     call_center_working_specs = serializers.IntegerField()
     call_center_primary_visits = serializers.IntegerField()
     managers_outcome_calls = serializers.IntegerField()
+    check_date = serializers.SerializerMethodField()
 
     def get_check_date(self, obj):
         return self.context['request'].query_params.get('check_date', None)
